@@ -12,13 +12,17 @@ st.title("🏙️ NYC Short-Term Rental Arbitrage Engine")
 st.markdown("Identifies high-ROI investment opportunities by combining **Airbnb Revenue** and **Zillow Costs**.")
 
 # Load Data (Cached so it doesn't reload every time you click)
+# ... inside app.py ...
+
 @st.cache_data
 def load_data():
-    # Load your processed CSV
-    df = pd.read_csv('data/processed/nyc_rental_arbitrage_results.csv')
+    # UPDATED PATH: Pointing to the new folder that WILL be on GitHub
+    df = pd.read_csv('app_data/nyc_rental_arbitrage_results.csv')
     
-    # Load the Map
-    gdf = gpd.read_file('data/raw/nyc_zip_codes.geojson')
+    # UPDATED PATH: Pointing to the new folder that WILL be on GitHub
+    gdf = gpd.read_file('app_data/nyc_zip_codes.geojson')
+    
+    # ... rest of the function remains the same ...
     
     # Simple preprocessing to ensure matching types
     df['zipcode'] = df['zipcode'].astype(str)
